@@ -208,6 +208,7 @@ var toGeoJSON = (function() {
                     name = nodeVal(get1(root, 'name')),
                     address = nodeVal(get1(root, 'address')),
                     styleUrl = nodeVal(get1(root, 'styleUrl')),
+                    inlineStyle = nodeVal(get1(root, 'Style')),
                     description = nodeVal(get1(root, 'description')),
                     timeSpan = get1(root, 'TimeSpan'),
                     timeStamp = get1(root, 'TimeStamp'),
@@ -219,7 +220,7 @@ var toGeoJSON = (function() {
                 if (!geomsAndTimes.geoms.length) return [];
                 if (name) properties.name = name;
                 if (address) properties.address = address;
-                if (styleUrl) {
+                if (styleUrl || inlineStyle) {
                     if (styleUrl[0] !== '#') {
                         styleUrl = '#' + styleUrl;
                     }
